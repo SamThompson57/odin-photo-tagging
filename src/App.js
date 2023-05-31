@@ -8,8 +8,9 @@ const App = () => {
     return data.targets
   }
 
-  const [target, setTarget] = useState(null)
+  const [target, setTarget] = useState({})
   const [availibleTargets, setAvailibleTargets] = useState(fetchTargets())
+  const [gameOn, setGameOn] = useState(true)
 
   const [score, setScore] = useState(0)
 
@@ -23,14 +24,25 @@ const newTarget = () => {
   setTarget(availibleTargets[rndIndex])
   setAvailibleTargets(availibleTargets.toSpliced(rndIndex,1))
   }
-  
+
+  const addScore = () => {
+    setScore(score + 1) 
+    
+    if (score <= 1) {
+      newTarget()
+    }else{
+      console.log("Game Over")
+      setGameOn(false) 
+      //Handle the game over here. 
+    } 
+  }
   return (
     <div className="App">
       <Headder target={target} score={score}/>
       
       {/* There will be a pop up instead of the body at the start of the game 
       and at the end displaying  */}
-      <Body target={target} newTarget={newTarget}/>
+      <Body target={target} addScore={addScore} gameOn={gameOn}/>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import shoot from "./clickHandler"
 
 
 const Body = (props) => {
-    const { target, newTarget } = props
+    const { target, addScore, gameOn } = props
     const ref = useRef(null)
 
     const { events } = useDraggable(ref)
@@ -14,7 +14,7 @@ const Body = (props) => {
         <div className="body">
             
             {/* Image - A dragable image that the player will hunt for the target */}
-            <div id="imgContainer" ref={ref} {...events} onClick={(event) => shoot(event, target, newTarget)} >
+            <div id="imgContainer" ref={ref} {...events} onClick={(event) => shoot(event, target, addScore, gameOn)} >
                 <img src={map}></img>
                 {/*<div className="refBox"></div>*/}
             </div>

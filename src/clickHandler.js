@@ -1,7 +1,6 @@
 
 
-function shoot(event, target, newTarget) {
-    console.log(target)
+function shoot(event, target, newTarget, gameOn) {
     //TODO: Pass the target object into the function and return true or false if the taget is hit
 
 
@@ -11,6 +10,8 @@ function shoot(event, target, newTarget) {
     const yPos = event.clientY - container.offsetTop + container.scrollTop
     
     console.log(`X: ${xPos} Y:${yPos}`)
+    
+    if (!gameOn) return
 
 
 
