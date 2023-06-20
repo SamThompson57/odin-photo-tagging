@@ -13,12 +13,23 @@ const App = () => {
   const [gameOn, setGameOn] = useState(true)
 
   const [score, setScore] = useState(0)
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+      let intervalId;
+      if (gameOn) {
+        // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
+        intervalId = setInterval(() => setTime(time + 1), 10);
+      }
+      return () => clearInterval(intervalId);
+    }, [gameOn, time]);
 
   useEffect(() => {
     newTarget()
 },[])
 
 const newTarget = () => {
+  console.log(availibleTargets.length)
   const rndIndex = Math.floor(Math.random()*availibleTargets.length)
   console.log(availibleTargets[rndIndex])
   setTarget(availibleTargets[rndIndex])
@@ -33,12 +44,20 @@ const newTarget = () => {
     }else{
       console.log("Game Over")
       setGameOn(false) 
-      //Handle the game over here. 
+      setAvailibleTargets(fetchTargets())
     } 
   }
+
+  const resetGame = () => {
+    setScore(0)
+    setGameOn(true)
+    newTarget()
+    setTime(0)
+  }
+
   return (
     <div className="App">
-      <Headder target={target} score={score}/>
+      <Headder target={target} score={score} time={time} gameOn={gameOn} resetGame={resetGame}/>
       
       {/* There will be a pop up instead of the body at the start of the game 
       and at the end displaying  */}
