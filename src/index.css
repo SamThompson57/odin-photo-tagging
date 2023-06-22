@@ -40,3 +40,17 @@ code {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
+.popup{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50vw;
+  width: 80vw;
+  background-color: white;
+  text-align: center;
+  z-index: 1;
+}

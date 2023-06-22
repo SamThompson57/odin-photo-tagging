@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Headder from "./Headder";
 import Body from "./Body";
+import PopUp from "./PopUp";
 
 const App = () => {
   const fetchTargets = () => {
@@ -57,10 +58,9 @@ const newTarget = () => {
 
   return (
     <div className="App">
-      <Headder target={target} score={score} time={time} gameOn={gameOn} resetGame={resetGame}/>
+      <Headder target={target} score={score} time={time}/>
       
-      {/* There will be a pop up instead of the body at the start of the game 
-      and at the end displaying  */}
+      {gameOn ? null : <PopUp resetGame={resetGame}/>}
       <Body target={target} addScore={addScore} gameOn={gameOn}/>
     </div>
   );

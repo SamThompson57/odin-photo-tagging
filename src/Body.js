@@ -13,7 +13,7 @@ const Body = (props) => {
     return (
         <div className="body">
             
-            {/* Image - A dragable image that the player will hunt for the target */}
+            
             <div id="imgContainer" ref={ref} {...events} onClick={(event) => shoot(event, target, addScore, gameOn)} >
                 <img src={map}></img>
             </div>

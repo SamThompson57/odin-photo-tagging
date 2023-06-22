@@ -3,7 +3,7 @@ import Timer from "./Timer"
 import Reset from "./Reset"
 
 const Headder = (props) => {
-    const {score, target, time, gameOn, resetGame} = props
+    const {score, target, time } = props
     return (
         <div className="headder">
             <div className="timerContainer">
@@ -12,7 +12,6 @@ const Headder = (props) => {
             </div>
             <div>Score: {score}/3</div>
             <div>Target: {target.name}, {target.series}</div>
-            {gameOn ? null:<Reset resetGame={resetGame}/>}
             {/* Google Sign in to track score */}
         </div>
     )
