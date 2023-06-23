@@ -11,7 +11,11 @@ const App = () => {
 
   const [target, setTarget] = useState({})
   const [availibleTargets, setAvailibleTargets] = useState(fetchTargets())
-  const [gameOn, setGameOn] = useState(true)
+  const [gameOn, setGameOn] = useState(false)
+
+
+  const [highScore, setHighScore] = useState(null)
+  const [lastScore, setLastScore] = useState(null)
 
   const [score, setScore] = useState(0)
   const [time, setTime] = useState(0);
@@ -43,6 +47,10 @@ const newTarget = () => {
     if (score <= 1) {
       newTarget()
     }else{
+      setLastScore(time)
+      if(!highScore || highScore>time){
+        setHighScore(time)
+      }
       console.log("Game Over")
       setGameOn(false) 
       setAvailibleTargets(fetchTargets())
@@ -60,7 +68,7 @@ const newTarget = () => {
     <div className="App">
       <Headder target={target} score={score} time={time}/>
       
-      {gameOn ? null : <PopUp resetGame={resetGame}/>}
+      {gameOn ? null : <PopUp resetGame={resetGame} lastScore={lastScore} highScore ={highScore}/>}
       <Body target={target} addScore={addScore} gameOn={gameOn}/>
     </div>
   );

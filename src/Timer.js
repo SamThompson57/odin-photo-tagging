@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from 'react';
+import timeConverter from "./timeConverter";
 
 const Timer = (props) => {
     const {time} = props
@@ -7,20 +7,11 @@ const Timer = (props) => {
    
 
     // Minutes calculation
-    const minutes = Math.floor((time % 360000) / 6000);
-
-    // Seconds calculation
-    const seconds = Math.floor((time % 6000) / 100);
-
-    // Milliseconds calculation
-    const milliseconds = time % 100;
 
     return (
         <div className="timer">
             <div className="stopwatch-time">
-            {minutes.toString().padStart(2, "0")}:
-            {seconds.toString().padStart(2, "0")}:
-            {milliseconds.toString().padStart(2, "0")}
+            {timeConverter(time)}
             </div>
         </div>
     )

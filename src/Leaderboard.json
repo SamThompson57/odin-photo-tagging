@@ -1,0 +1,44 @@
+{
+    "scores": [
+        {
+            "player": "Pidgicle",
+            "time": 1000
+        },
+        {
+            "player": "Bidgicle",
+            "time": 1200
+        },
+        {
+            "player": "Cidgicle",
+            "time": 1400
+        },
+        {
+            "player": "Didgicle",
+            "time": 1600
+        },
+        {
+            "player": "Fidgicle",
+            "time": 1800
+        },
+        {
+            "player": "Gidgicle",
+            "time": 2000
+        },
+        {
+            "player": "Hidgicle",
+            "time": 2200
+        },
+        {
+            "player": "Jidgicle",
+            "time": 2400
+        },
+        {
+            "player": "Kidgicle",
+            "time": 2600
+        },
+        {
+            "player": "Lidgicle",
+            "time": 2800
+        }
+    ]
+}
