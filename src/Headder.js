@@ -1,6 +1,6 @@
 import React from "react"
 import Timer from "./Timer"
-import Reset from "./Reset"
+import Auth from "./Auth"
 
 const Headder = (props) => {
     const {score, target, time } = props
@@ -12,7 +12,7 @@ const Headder = (props) => {
             </div>
             <div>Score: {score}/3</div>
             <div>Target: {target.name}, {target.series}</div>
-            {/* Google Sign in to track score */}
+            <Auth/>
         </div>
     )
 }
