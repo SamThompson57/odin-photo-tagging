@@ -1,24 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import signOn from "./components/outline_account.png"
 import checkSignedIn from "./handles/checkSignedIn";
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import Profile from "./Profile";
 
 
 const Auth = () => {
 
-    const [logInStatus, setLogInStatus] = useState(checkSignedIn())
+    const [logInStatus, setLogInStatus] = useState(!!getAuth().currentUser)
     
+    function initFirebaseAuth() {
+        onAuthStateChanged(getAuth(), authStateObserver)
+    }
+
     async function signIn(){
         const provider = new GoogleAuthProvider();
         await signInWithPopup(getAuth(), provider)
-        setLogInStatus(checkSignedIn())
+        
     }
 
     function signOutUser() {
         signOut(getAuth())
         setLogInStatus(checkSignedIn())
     }
+
+    function authStateObserver(user) {
+        if (user) {
+          setLogInStatus(checkSignedIn())
+
+        } else {
+          setLogInStatus(checkSignedIn())
+        }
+      }
+
+    useEffect(() => {
+        initFirebaseAuth()
+      }, []);
 
     return (
         <div>

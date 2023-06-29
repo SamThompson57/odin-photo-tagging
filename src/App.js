@@ -2,11 +2,18 @@ import React, { useEffect, useState } from "react";
 import Headder from "./Headder";
 import Body from "./Body";
 import PopUp from "./PopUp";
+import { getFirestore, collection, getDoc, doc, getDocs } from 'firebase/firestore'
 
 const App = () => {
-  const fetchTargets = () => {
-    const data = require('./AllTargets.json')
-    return data.targets
+  async function fetchTargets() {
+    const targets = []
+    const dataSnapshot = await getDocs(collection(getFirestore(), 'targets'))
+    dataSnapshot.forEach((doc) => {
+      const target = doc.data()
+      targets.push(target);
+    });
+    console.log(targets)
+    return targets
   }
 
   const [target, setTarget] = useState({})
@@ -33,12 +40,12 @@ const App = () => {
     newTarget()
 },[])
 
-const newTarget = () => {
-  console.log(availibleTargets.length)
-  const rndIndex = Math.floor(Math.random()*availibleTargets.length)
-  console.log(availibleTargets[rndIndex])
-  setTarget(availibleTargets[rndIndex])
-  setAvailibleTargets(availibleTargets.toSpliced(rndIndex,1))
+async function newTarget() {
+  const targetlist = await availibleTargets
+  const rndIndex = Math.floor(Math.random()*targetlist.length)
+  console.log(targetlist[rndIndex])
+  setTarget(targetlist[rndIndex])
+  setAvailibleTargets(targetlist.toSpliced(rndIndex,1))
   }
 
   const addScore = () => {
