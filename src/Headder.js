@@ -3,7 +3,7 @@ import Timer from "./Timer"
 import Auth from "./Auth"
 
 const Headder = (props) => {
-    const {score, target, time } = props
+    const {score, target, time, resetHS, highScore } = props
     return (
         <div className="headder">
             <div className="timerContainer">
@@ -12,7 +12,7 @@ const Headder = (props) => {
             </div>
             <div>Score: {score}/3</div>
             <div>Target: {target.name}, {target.series}</div>
-            <Auth/>
+            <Auth resetHS={resetHS} highScore={highScore}/>
         </div>
     )
 }

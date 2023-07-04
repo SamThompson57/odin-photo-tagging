@@ -12,12 +12,11 @@ const App = () => {
       const target = doc.data()
       targets.push(target);
     });
-    console.log(targets)
     return targets
   }
-
+  const targetPull = fetchTargets()
   const [target, setTarget] = useState({})
-  const [availibleTargets, setAvailibleTargets] = useState(fetchTargets())
+  const [availibleTargets, setAvailibleTargets] = useState(targetPull)
   const [gameOn, setGameOn] = useState(false)
 
 
@@ -26,6 +25,11 @@ const App = () => {
 
   const [score, setScore] = useState(0)
   const [time, setTime] = useState(0);
+
+  function resetHS() {
+    //function to reset HS when user loggs out
+    setHighScore(null)
+  }
 
   useEffect(() => {
       let intervalId;
@@ -60,7 +64,7 @@ async function newTarget() {
       }
       console.log("Game Over")
       setGameOn(false) 
-      setAvailibleTargets(fetchTargets())
+      setAvailibleTargets(targetPull)
     } 
   }
 
@@ -73,7 +77,7 @@ async function newTarget() {
 
   return (
     <div className="App">
-      <Headder target={target} score={score} time={time}/>
+      <Headder target={target} score={score} time={time} resetHS={resetHS} highScore={highScore}/>
       
       {gameOn ? null : <PopUp resetGame={resetGame} lastScore={lastScore} highScore ={highScore}/>}
       <Body target={target} addScore={addScore} gameOn={gameOn}/>

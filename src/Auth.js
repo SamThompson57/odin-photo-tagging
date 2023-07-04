@@ -3,9 +3,11 @@ import signOn from "./components/outline_account.png"
 import checkSignedIn from "./handles/checkSignedIn";
 import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import Profile from "./Profile";
+import getOrSetHighScore from "./handles/getHighScore";
 
 
-const Auth = () => {
+const Auth = (props) => {
+  const {resetHS, highScore} = props
 
     const [logInStatus, setLogInStatus] = useState(!!getAuth().currentUser)
     
@@ -16,12 +18,13 @@ const Auth = () => {
     async function signIn(){
         const provider = new GoogleAuthProvider();
         await signInWithPopup(getAuth(), provider)
-        
+        getOrSetHighScore(highScore)
     }
 
     function signOutUser() {
         signOut(getAuth())
         setLogInStatus(checkSignedIn())
+        resetHS()
     }
 
     function authStateObserver(user) {
