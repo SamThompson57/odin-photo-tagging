@@ -4,6 +4,7 @@ import timeConverter from "./timeConverter";
 import checkSignedIn from "./handles/checkSignedIn";
 import { doc } from "firebase/firestore";
 import getOrSetHighScore from "./handles/getHighScore";
+import LeaderBoard from "./LeaderBoard";
 
 
 
@@ -18,12 +19,12 @@ const PopUp = (props) => {
             setSavedScore(result)
         }
         getHighScore()
-    },[highScore])
+    },[savedScore])
     
     return (
         <div className="popup">
-            <div>FIND THREE TARGETS IN AS QUICK AS POSSIBLE</div>
-            <div>TOP 10</div>
+            <div className="instruction">FIND THREE TARGETS AS QUICKLY AS POSSIBLE</div>
+            <LeaderBoard/>
             {lastScore ? <div>SCORE: {timeConverter(lastScore)}</div>: null}          
             {savedScore ? <div>Personal Best: {timeConverter(savedScore)}</div> : null}
             <Reset resetGame={resetGame}/>

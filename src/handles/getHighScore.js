@@ -31,7 +31,6 @@ import { getAuth } from "firebase/auth"
             score: newScore
         });
     } 
-    console.log(newScore)
     return newScore
 
 }

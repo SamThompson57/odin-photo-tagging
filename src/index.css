@@ -70,3 +70,29 @@ code {
 .signOut:hover {
   cursor: grab;
 }
+
+.topTable{
+  width: 50vw;
+  margin: auto;
+}
+
+.topTable > div{
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 2fr;
+  border-width: 1px 1px 0px 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.nameField{
+  border-right: 1px solid black;
+}
+
+.topTable :last-child{
+  border-width: 1px 1px 1px 1px;
+}
+
+.lineYou{
+  background-color: lightblue;
+}
