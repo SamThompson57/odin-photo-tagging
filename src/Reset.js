@@ -4,7 +4,7 @@ const Reset = (props) =>{
     const { resetGame } = props
     return(
         <div>
-            <button onClick={resetGame}>START</button>
+            <button className="reset" onClick={resetGame}>START</button>
         </div>
     )
 }

@@ -55,7 +55,6 @@ code {
   top: 20%;
   margin-left: auto;
   margin-right: auto;
-  height: 60vh;
   width: 80vw;
   background-color: white;
   text-align: center;
@@ -73,7 +72,7 @@ code {
 
 .topTable{
   width: 50vw;
-  margin: auto;
+  margin: 1vh auto;
 }
 
 .topTable > div{
@@ -95,4 +94,22 @@ code {
 
 .lineYou{
   background-color: lightblue;
+}
+
+.instruction{
+  margin: 2vh;
+  font-size: 3vh;
+}
+
+.reset{
+  margin: 1vh;
+  font-size: 30px;
+  background-color: gray;
+  color: white;
+  border-radius: 20px;
+}
+
+.scores >div{
+  margin: 0.5vh;
+  font-size: 20px;
 }

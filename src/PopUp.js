@@ -16,7 +16,7 @@ const PopUp = (props) => {
     useEffect(() => {
         const getHighScore = async () => {
             const result = await getOrSetHighScore(lastScore)
-            setSavedScore(result)
+            await setSavedScore(result)
         }
         getHighScore()
     },[savedScore])
@@ -25,8 +25,11 @@ const PopUp = (props) => {
         <div className="popup">
             <div className="instruction">FIND THREE TARGETS AS QUICKLY AS POSSIBLE</div>
             <LeaderBoard/>
-            {lastScore ? <div>SCORE: {timeConverter(lastScore)}</div>: null}          
-            {savedScore ? <div>Personal Best: {timeConverter(savedScore)}</div> : null}
+            <div className="scores">
+                {lastScore ? <div>Last Score: {timeConverter(lastScore)}</div>: null}          
+                {savedScore ? <div>Personal Best: {timeConverter(savedScore)}</div> : null}
+            </div>
+            
             <Reset resetGame={resetGame}/>
         </div>
     )

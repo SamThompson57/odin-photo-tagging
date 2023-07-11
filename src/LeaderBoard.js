@@ -30,22 +30,25 @@ const LeaderBoard = () => {
                 });
               });
             console.log(leaderList)
-            await setTop10(leaderList)
+            setTop10(leaderList)
         }
 
         const getUid = () => {
-            if(getAuth().currentUser) setUid(getAuth().currentUser.uid)
+            const currentUser = getAuth().currentUser
+            if(currentUser) setUid(getAuth().currentUser.uid)
         }
 
         getUid()
         fetchLeaderboard()
+
+        console.log('Leaderboard updated')
     },[])
 
     return (
         <div>
             {top10.length ?
             <div>
-                <div>TOP 10</div>
+                <div className="tableTitle">TOP {top10.length}</div>
                 <div className="topTable">
                     {top10.map(line => (
                     <div className={line.id === uid ? "lineYou" : "lineElse"} key={line.id}>
